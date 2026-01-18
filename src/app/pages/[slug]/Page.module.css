@@ -1,0 +1,51 @@
+.pageContent {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.title {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.body {
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.paragraph {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.heading3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.listItem {
+    display: flex;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    padding-left: 1rem;
+}
+
+.bullet {
+    color: var(--primary);
+    margin-right: 0.75rem;
+    font-weight: bold;
+}
+
+.paragraph {
+    margin-bottom: 1rem;
+    min-height: 1rem;
+}

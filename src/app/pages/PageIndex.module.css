@@ -1,0 +1,44 @@
+.hubGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.hubCard {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.hubCard:hover {
+  background-color: var(--surface-hover);
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.iconWrapper {
+  font-size: 2rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContent h3 {
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.cardContent p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}

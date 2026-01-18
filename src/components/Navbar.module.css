@@ -1,0 +1,163 @@
+.navbar {
+  height: var(--nav-height);
+  background: var(--surface); /* Fallback */
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoImage {
+  border-radius: 50%;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.navLink {
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.discordBtn {
+  background-color: #5865F2;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(88, 101, 242, 0.2);
+}
+
+.discordBtn:hover {
+  background-color: #4752C4;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(88, 101, 242, 0.3);
+}
+
+.themeToggle {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.themeToggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: var(--surface);
+  min-width: 200px;
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  z-index: 101;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+.dropdownItem {
+  color: var(--text-muted);
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.dropdownItem:hover {
+  background-color: var(--surface-hover);
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-5px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
