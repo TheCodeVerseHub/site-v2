@@ -44,7 +44,7 @@ const Footer = () => {
             <div className={styles.linkGroup}>
               <h4>Connect</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://github.com/TheCodeVerseHub/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                 <li><a href="https://discord.gg/3xKFvKhuGR" target="_blank" rel="noopener noreferrer">Discord</a></li>
                 <li><a href="https://instagram.com/thecodeversehub" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                 <li><a href="mailto:thecodeversedev@gmail.com">Email Us</a></li>

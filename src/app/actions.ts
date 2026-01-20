@@ -5,6 +5,7 @@ import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { SignJWT } from 'jose';
 
 const filePath = path.join(process.cwd(), 'src/data/announcements.json');
 
@@ -19,8 +20,19 @@ export async function login(prevState: any, formData: FormData) {
     username === process.env.ADMIN_USERNAME &&
     password === process.env.ADMIN_PASSWORD
   ) {
+    const secret = new TextEncoder().encode(
+      process.env.ADMIN_SESSION_SECRET || 'secret'
+    );
+    const alg = 'HS256';
+  
+    const jwt = await new SignJWT({ admin: true })
+      .setProtectedHeader({ alg })
+      .setIssuedAt()
+      .setExpirationTime('24h')
+      .sign(secret);
+
     const cookieStore = await cookies();
-    cookieStore.set('admin_session', process.env.ADMIN_SESSION_SECRET || 'secret', {
+    cookieStore.set('admin_session', jwt, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       maxAge: 60 * 60 * 24, // 1 day

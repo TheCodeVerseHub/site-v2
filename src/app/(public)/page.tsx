@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import ContactSection from '@/components/ContactSection';
-import styles from './Home.module.css';
+import styles from '../Home.module.css';
 
 async function getAnnouncements() {
   const filePath = path.join(process.cwd(), 'src/data/announcements.json');
