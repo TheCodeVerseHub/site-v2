@@ -89,6 +89,15 @@ export default async function Home() {
                 </Link>
               </div>
             </div>
+            <div className={`card ${styles.projectCard}`}>
+              <h3>CodeVerse Linux Distro</h3>
+              <p className="text-muted">A community-driven, Arch-based Linux distribution focused on Wayland and developer tools.</p>
+              <div style={{ marginTop: '1rem' }}>
+                 <Link href="https://github.com/TheCodeVerseHub/CodeVerseLinuxDistro" target="_blank" className="btn btn-primary" style={{ fontSize: '0.9rem' }}>
+                   View on GitHub
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
