@@ -15,17 +15,7 @@ async function getPages() {
 
 // Map slug to some icon (emoji for simplicity or SVG)
 const getIcon = (slug: string) => {
-    switch(slug) {
-        case 'rules': return '📜';
-        case 'faq': return '❓';
-        case 'resources': return '📚';
-        case 'join': return '👋';
-        case 'tags': return '🏷️';
-        case 'emojis': return '😀';
-        case 'moderation-guide': return '🛡️';
-        case 'code-of-conduct': return '🤝';
-        default: return '📄';
-    }
+    return null;
 }
 
 const getDescription = (slug: string) => {
@@ -35,9 +25,10 @@ const getDescription = (slug: string) => {
         case 'resources': return 'A collection of helpful programming resources.';
         case 'join': return 'How to join our Discord server.';
         case 'tags': return 'Explanation of server roles and tags.';
-        case 'emojis': return 'List of custom emojis available for use.';
         case 'moderation-guide': return 'Guidelines for our moderation team.';
         case 'code-of-conduct': return 'Our expectations for community behavior.';
+        case 'how-to-ask': return 'Learn how to ask questions effectively.';
+        case 'contributing': return 'How to contribute to our projects.';
         default: return 'More information.';
     }
 }
@@ -55,9 +46,6 @@ export default async function PagesIndex() {
       <div className={styles.hubGrid}>
         {pagesList.map((page) => (
           <Link href={`/pages/${page.slug}`} key={page.slug} className={styles.hubCard}>
-            <div className={styles.iconWrapper}>
-               {getIcon(page.slug)}
-            </div>
             <div className={styles.cardContent}>
                <h3>{page.title}</h3>
                <p>{getDescription(page.slug)}</p>

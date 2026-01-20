@@ -1,5 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import styles from './Page.module.css';
 
 async function getPageData(slug: string) {
@@ -33,75 +36,41 @@ export default async function ContentPage({ params }: { params: Promise<{ slug: 
     );
   }
 
-  // Basic formatter for newlines and bold text
-  const formatContent = (text: string) => {
-    return text.split('\n').map((line, i) => {
-      // Handle Headers
-      if (line.startsWith('### ')) {
-        return <h3 key={i} className={styles.heading3}>{line.replace('### ', '')}</h3>;
-      }
-      
-      // Handle List Items
-      if (line.trim().startsWith('* ')) {
-         const content = line.trim().substring(2);
-         // Split by bold patterns
-         const parts = content.split(/(\*\*.*?\*\*)/g);
-         return (
-             <div key={i} className={styles.listItem}>
-                 <span className={styles.bullet}>•</span>
-                 <span>
-                    {parts.map((part, j) => {
-                        // Handle Bold Text
-                        if (part.startsWith('**') && part.endsWith('**')) {
-                            const innerText = part.slice(2, -2);
-                            // Check for links inside bold
-                            const linkedText = innerText.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: var(--primary)">$1</a>');
-                            return <strong key={j} dangerouslySetInnerHTML={{ __html: linkedText }} />;
-                        }
-                        
-                        // Handle Links outside bold
-                        const linkedPart = part.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: var(--primary)">$1</a>');
-                        if (linkedPart !== part) {
-                             return <span key={j} dangerouslySetInnerHTML={{ __html: linkedPart }} />;
-                        }
-                        
-                        return part;
-                    })}
-                 </span>
-             </div>
-         )
-      }
-
-      // Paragraph parsing
-      const parts = line.split(/(\*\*.*?\*\*)/g);
-      return (
-        <p key={i} className={styles.paragraph}>
-          {parts.map((part, j) => {
-            // Handle Bold Text
-            if (part.startsWith('**') && part.endsWith('**')) {
-                const innerText = part.slice(2, -2);
-                // Check for links inside bold
-                const linkedText = innerText.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: var(--primary)">$1</a>');
-                return <strong key={j} dangerouslySetInnerHTML={{ __html: linkedText }} />;
-            }
-            
-            // Handle Links outside bold
-            const linkedPart = part.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: var(--primary)">$1</a>');
-            if (linkedPart !== part) {
-                 return <span key={j} dangerouslySetInnerHTML={{ __html: linkedPart }} />;
-            }
-            return part;
-          })}
-        </p>
-      );
-    });
-  };
-
   return (
     <div className="container section">
-      <div className={styles.pageContent}>
-        <h1 className={styles.title}>{data.title}</h1>
-        <div className={styles.body}>{formatContent(data.content)}</div>
+      <h1 className={styles.title}>{data.title}</h1>
+      <div className={styles.content}>
+        <ReactMarkdown 
+          remarkPlugins={[remarkGfm]}
+          components={{
+            a: ({node, ...props}) => {
+                return <Link href={props.href || '#'} target="_blank" className={styles.link}>{props.children}</Link>
+            },
+            h1: ({node, ...props}) => <h1 className={styles.h1} {...props} />,
+            h2: ({node, ...props}) => <h2 className={styles.h2} {...props} />,
+            h3: ({node, ...props}) => <h3 className={styles.h3} {...props} />,
+            ul: ({node, ...props}) => <ul className={styles.ul} {...props} />,
+            ol: ({node, ...props}) => <ol className={styles.ol} {...props} />,
+            li: ({node, ...props}) => <li className={styles.li} {...props} />,
+            p: ({node, ...props}) => <p className={styles.p} {...props} />,
+            code: ({node, className, children, ...props}) => {
+                const match = /language-(\w+)/.exec(className || '');
+                const isInline = !match && !String(children).includes('\n');
+                return isInline ? (
+                    <code className={styles.inlineCode} {...props}>{children}</code>
+                ) : (
+                    <pre className={styles.pre}>
+                        <code className={className} {...props}>
+                            {children}
+                        </code>
+                    </pre>
+                );
+            },
+            blockquote: ({node, ...props}) => <blockquote className={styles.blockquote} {...props} />,
+          }}
+        >
+          {data.content}
+        </ReactMarkdown>
       </div>
     </div>
   );

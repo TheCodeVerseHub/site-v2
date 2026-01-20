@@ -1,51 +1,85 @@
-.pageContent {
-    max-width: 800px;
-    margin: 0 auto;
-    background: var(--surface);
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border);
+.content {
+  max-width: 800px;
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  line-height: 1.6;
 }
 
 .title {
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 0.5rem;
-    display: inline-block;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
-.body {
-    font-size: 1.1rem;
-    color: var(--text-main);
+.h1, .h2, .h3 {
+  color: var(--text-main);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
-.paragraph {
-    margin-bottom: 1rem;
-    line-height: 1.6;
+.h1 { font-size: 2rem; }
+.h2 { font-size: 1.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+.h3 { font-size: 1.4rem; }
+
+.p {
+  margin-bottom: 1rem;
 }
 
-.heading3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: var(--text-main);
-    font-weight: 600;
+.ul, .ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
 }
 
-.listItem {
-    display: flex;
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-    padding-left: 1rem;
+.li {
+  margin-bottom: 0.5rem;
 }
 
-.bullet {
-    color: var(--primary);
-    margin-right: 0.75rem;
-    font-weight: bold;
+.link {
+  color: var(--primary);
+  text-decoration: none;
 }
 
-.paragraph {
-    margin-bottom: 1rem;
-    min-height: 1rem;
+.link:hover {
+  text-decoration: underline;
+}
+
+.blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.inlineCode {
+  background: rgba(120, 120, 120, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.pre {
+  background: #1e1e1e;
+  padding: 1rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.pre code {
+  font-family: monospace;
+  color: #d4d4d4;
+  font-size: 0.9rem;
 }

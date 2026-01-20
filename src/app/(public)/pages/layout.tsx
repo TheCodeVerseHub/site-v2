@@ -27,7 +27,7 @@ export default async function PagesLayout({
 
   // Define some ordering or grouping if needed. For now, simple list.
   // We can group them logically based on the keys if we want to mimic the screenshot perfectly.
-  // e.g. Information: Rules, Privacy. Community: Top Members, Emojis.
+  // e.g. Information: Rules, Privacy. Community: Top Members.
   
   return (
     <div className={styles.container}>
