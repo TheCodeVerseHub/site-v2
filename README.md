@@ -2,7 +2,7 @@
 
 Welcome to the **CodeVerse Hub v2** repository! This is the source code for the official website of CodeVerse Hub, a community-driven platform designed for developers to collaborate, learn, and build software together.
 
-## 🚀 About The Project
+## About The Project
 
 CodeVerse Hub is more than just a Discord server. It's a collective of passionate developers, designers, and creators. The website serves as a central point for our resources, announcements, and project milestones.
 
@@ -12,7 +12,7 @@ CodeVerse Hub is more than just a Discord server. It's a collective of passionat
 *   **Timeline:** Tracks major events and announcements.
 *   **Admin Dashboard:** A secure internal tool for managing site content and announcements.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 This project is built using modern web technologies:
 
@@ -22,7 +22,7 @@ This project is built using modern web technologies:
 *   **Authentication:** Custom JWT-based admin authentication (`jose`).
 *   **Data:** JSON-based simple data storage (for v2 simplicity).
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -35,7 +35,7 @@ src/
 └── styles/               # Global styles
 ```
 
-## 🏁 Getting Started
+## Getting Started
 
 Follow these steps to set up the project locally.
 
@@ -74,7 +74,7 @@ Follow these steps to set up the project locally.
 5.  **Open your browser:**
     Navigate to [http://localhost:3000](http://localhost:3000).
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from the community! Whether it's fixing a bug, improving documentation, or adding a new feature, your help is appreciated.
 
@@ -86,14 +86,14 @@ We welcome contributions from the community! Whether it's fixing a bug, improvin
 
 Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-## 📜 License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## 💬 Community
+## Community
 
 *   **Discord:** [Join our Server](https://discord.gg/3xKFvKhuGR)
 *   **GitHub:** [TheCodeVerseHub](https://github.com/TheCodeVerseHub)
 
 ---
-Built with ❤️ by the CodeVerse Hub Team
+Built with by the CodeVerse Hub Team
