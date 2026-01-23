@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import pagesData from '@/data/pages.json'
+import { getAllPages } from '@/lib/api'
 
 // Ensure we have a valid base URL
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://codeversehub.com'
@@ -17,9 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }))
 
-  // Dynamic Routes from pages.json
-  const pageRoutes = Object.keys(pagesData).map((slug) => ({
-    url: `${baseUrl}/pages/${slug}`,
+  // Dynamic Routes from markdown files
+  const pages = getAllPages();
+  const pageRoutes = pages.map((page) => ({
+    url: `${baseUrl}/pages/${page.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.6,

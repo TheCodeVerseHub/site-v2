@@ -1,31 +1,19 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import styles from './Page.module.css';
-
-async function getPageData(slug: string) {
-  const filePath = path.join(process.cwd(), 'src/data/pages.json');
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
-    return data[slug] || null;
-  } catch (error) {
-    return null;
-  }
-}
+import { getPageBySlug } from '@/lib/api';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const data = await getPageData(slug);
+    const data = getPageBySlug(slug);
     if (!data) return { title: 'Not Found' };
     return { title: `${data.title} - CodeVerse Hub` };
 }
 
 export default async function ContentPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const data = await getPageData(slug);
+  const data = getPageBySlug(slug);
 
   if (!data) {
     return (

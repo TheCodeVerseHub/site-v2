@@ -1,17 +1,6 @@
 import Link from 'next/link';
-import fs from 'fs';
-import path from 'path';
 import styles from './PageIndex.module.css';
-
-async function getPages() {
-  const filePath = path.join(process.cwd(), 'src/data/pages.json');
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
-  } catch (error) {
-    return {};
-  }
-}
+import { getAllPages } from '@/lib/api';
 
 // Map slug to some icon (emoji for simplicity or SVG)
 const getIcon = (slug: string) => {
@@ -34,11 +23,7 @@ const getDescription = (slug: string) => {
 }
 
 export default async function PagesIndex() {
-  const pagesData = await getPages();
-  const pagesList = Object.keys(pagesData).map(slug => ({
-    slug,
-    title: pagesData[slug].title
-  }));
+  const pagesList = getAllPages();
 
   return (
     <div>

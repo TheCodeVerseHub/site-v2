@@ -1,29 +1,13 @@
 import Link from 'next/link';
-import fs from 'fs';
-import path from 'path';
 import styles from './PagesLayout.module.css';
-
-// We need to read the pages data to generate the sidebar links
-async function getPages() {
-  const filePath = path.join(process.cwd(), 'src/data/pages.json');
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
-  } catch (error) {
-    return {};
-  }
-}
+import { getAllPages } from '@/lib/api';
 
 export default async function PagesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pagesData = await getPages();
-  const pagesList = Object.keys(pagesData).map(slug => ({
-    slug,
-    title: pagesData[slug].title
-  }));
+  const pagesList = getAllPages();
 
   // Define some ordering or grouping if needed. For now, simple list.
   // We can group them logically based on the keys if we want to mimic the screenshot perfectly.
