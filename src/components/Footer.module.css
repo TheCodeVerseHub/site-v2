@@ -1,7 +1,7 @@
 .footer {
   background: var(--surface);
   border-top: 1px solid var(--border);
-  padding: 4rem 0 2rem;
+  padding: 4rem 0 0; /* Changed padding */
   margin-top: auto;
 }
 
@@ -9,49 +9,92 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  max-width: var(--max-width);
+  max-width: 1400px; /* Wider container */
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
 .top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* 4 Columns: Wide Brand + 3 Link columns */
+  gap: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border); /* Subtle divider */
+  margin-bottom: 2rem;
 }
 
-.brand h3 {
-  color: var(--text-main);
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 700;
+@media (max-width: 1024px) {
+    .top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
 }
 
-.brand p {
+@media (max-width: 640px) {
+    .top {
+        grid-template-columns: 1fr;
+    }
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Increased spacing */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.logoIcon {
+    color: var(--primary);
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.description {
   color: var(--text-muted);
   max-width: 320px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
-.links {
-  display: flex;
-  gap: 4rem;
+.madeWithLove {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }
 
+.heartIcon {
+    color: var(--primary);
+}
+
+.links {
+    display: contents; /* Helper if wrapper existed, but we removed it. Keeping clean. */
+}
+
+/* Removed separate .links grid definition since it's now flat */
+
 .linkGroup h4 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  font-size: 1rem; /* Slightly larger header */
+  color: var(--text-main);
   margin-bottom: 1.25rem;
-  letter-spacing: 0.1em;
   font-weight: 600;
 }
 
 .linkGroup ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .linkGroup li {
@@ -59,9 +102,10 @@
 }
 
 .linkGroup a {
-  color: var(--text-main);
-  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
   transition: color 0.2s;
+  text-decoration: none;
 }
 
 .linkGroup a:hover {
@@ -69,14 +113,63 @@
 }
 
 .bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  padding-bottom: 2rem;
   color: var(--text-muted);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logoSmall {
+    display: none; /* Hide N logo */
+}
+
+.decoration {
+    display: flex;
+    justify-content: center;
+    flex: 1; /* Center alignment */
+}
+.starIcon {
+    color: var(--primary);
+    opacity: 0.8;
+    width: 24px;
+    height: 24px;
+}
+
+.social {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.social a {
+    color: var(--text-main); /* White icons */
+    transition: all 0.2s;
+}
+
+.social a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .top {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 }
 

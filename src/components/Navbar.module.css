@@ -34,13 +34,25 @@
   gap: 0.75rem;
 }
 
-.logoImage {
-  border-radius: 50%;
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(147, 51, 234, 0.15); /* Purple with low opacity */
+  border: 1px solid rgba(147, 51, 234, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-light);
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: -0.25rem;
 }
 
 .navLinks {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   list-style: none;
   align-items: center;
 }

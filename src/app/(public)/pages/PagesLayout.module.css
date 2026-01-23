@@ -26,6 +26,9 @@
   display: none; /* Hidden on mobile by default */
   border-right: 1px solid var(--border);
   padding-right: 2rem;
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+  height: fit-content;
 }
 
 .sidebarTitle {
